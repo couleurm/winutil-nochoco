@@ -10,7 +10,7 @@
     Author         : Chris Titus @christitustech
     Runspace Author: @DeveloperDurp
     GitHub         : https://github.com/ChrisTitusTech
-    Version        : 23.11.14
+    Version        : 23.11.23
 #>
 
 Start-Transcript $ENV:TEMP\Winutil.log -Append
@@ -21,7 +21,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
 $sync.PSScriptRoot = $PSScriptRoot
-$sync.version = "23.11.14"
+$sync.version = "23.11.23"
 $sync.configs = @{}
 $sync.ProcessRunning = $false
 
@@ -276,6 +276,8 @@ function Install-WinUtilChoco {
         Installs Chocolatey if it is not already installed
 
     #>
+
+    if ($env:WINUTIL_NOCHOCO){return}
 
     try {
         Write-Host "Checking if Chocolatey is Installed..."

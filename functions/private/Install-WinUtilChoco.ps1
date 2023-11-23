@@ -7,6 +7,8 @@ function Install-WinUtilChoco {
 
     #>
 
+    if ($env:WINUTIL_NOCHOCO){return}
+
     try {
         Write-Host "Checking if Chocolatey is Installed..."
 
